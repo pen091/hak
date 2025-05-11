@@ -1,0 +1,142 @@
+
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackpace Courses</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #00ff00;
+      font-family: monospace;
+      margin: 0;
+    }
+    header {
+      background: #000;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      color: #00ff00;
+      margin: 0;
+    }
+    .nav {
+      display: flex;
+      gap: 1rem;
+    }
+    .nav a {
+      color: #00ff00;
+      text-decoration: none;
+    }
+    .container {
+      margin: 2rem;
+      border: 1px solid #00ff00;
+      padding: 1rem;
+    }
+    .topic-link {
+      color: #00ff00;
+      cursor: pointer;
+      text-decoration: underline;
+      display: block;
+      margin: 0.5rem 0;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      background: #000;
+      color: #00ff00;
+      padding: 1rem;
+      border: 2px solid #00ff00;
+      z-index: 1000;
+    }
+    .popup h3 {
+      margin-top: 0;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+    }
+    footer {
+      background: #000;
+      padding: 1rem;
+      text-align: center;
+    }
+    .social-icons img {
+      width: 50px;
+      margin: 0 10px;
+      filter: brightness(0) saturate(100%) invert(71%) sepia(91%) saturate(374%) hue-rotate(77deg) brightness(120%) contrast(119%);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hackpace</h1>
+    <nav class="nav">
+      <a href="#c" onclick="location.href='https://wa.me/1234567890'">C Language</a>
+      <a href="#linux" onclick="location.href='https://wa.me/1234567890'">Linux Administration</a>
+      <a href="#python" onclick="location.href='https://wa.me/1234567890'">Python Programming</a>
+      <a href="#bash" onclick="location.href='https://wa.me/1234567890'">Bash Scripting</a>
+      <a href="#assembly" onclick="location.href='https://wa.me/1234567890'">x86/x86_64 Assembly</a>
+    </nav>
+  </header>  <main>
+    <div id="c" class="container">
+      <h2>C Language</h2>
+      <span class="topic-link" onclick="showPopup('C Basics Outline')">C Basics</span>
+      <span class="topic-link" onclick="showPopup('Pointers, Memory and Structs Outline')">Pointers, Memory and Structs</span>
+    </div><div id="linux" class="container">
+  <h2>Linux Administration</h2>
+  <span class="topic-link" onclick="showPopup('User Management, Services, Crontab')">User Management, Services, Crontab</span>
+</div>
+
+<div id="python" class="container">
+  <h2>Python Programming</h2>
+  <span class="topic-link" onclick="showPopup('Syntax, Loops, Functions, OOP')">Syntax, Loops, Functions, OOP</span>
+</div>
+
+<div id="bash" class="container">
+  <h2>Bash Scripting</h2>
+  <span class="topic-link" onclick="showPopup('Bash Variables, Conditionals, Loops')">Bash Variables, Conditionals, Loops</span>
+</div>
+
+<div id="assembly" class="container">
+  <h2>x86/x86_64 Assembly Language</h2>
+  <span class="topic-link" onclick="showPopup('Registers, Memory, Interrupts')">Registers, Memory, Interrupts</span>
+</div>
+
+  </main>  <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+  <div class="popup" id="popup">
+    <h3>Course Outline</h3>
+    <p id="popup-text">Placeholder</p>
+    <button onclick="hidePopup()">Close</button>
+  </div>  <footer>
+    <div class="social-icons">
+      <a href="https://github.com"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"></a>
+      <a href="https://youtube.com"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+      <a href="https://tiktok.com"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
+      <a href="https://wa.me/1234567890"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+      <a href="https://facebook.com"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook"></a>
+    </div>
+  </footer>  <script>
+    function showPopup(text) {
+      document.getElementById('popup-text').innerText = text;
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function hidePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script></body>
+</html>
