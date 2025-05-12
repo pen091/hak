@@ -1,196 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hackpace - Cybersecurity Learning</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Courier New', monospace;
-        }
-
-        body {
-            background-color: #0d0d0d;
-            color: #00ff00;
-        }
-
-        header {
-            padding: 1rem;
-            background-color: #000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #00ff00;
-        }
-
-        .logo {
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        nav a {
-            color: #00ff00;
-            text-decoration: none;
-            margin-left: 2rem;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            text-shadow: 0 0 10px #00ff00;
-        }
-
-        .course-container {
-            border: 2px solid #00ff00;
-            margin: 2rem;
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        .course-topics {
-            margin-top: 1rem;
-        }
-
-        .topic-link {
-            color: #00ff00;
-            text-decoration: none;
-            margin-right: 1rem;
-            cursor: pointer;
-        }
-
-        .topic-link:hover {
-            text-decoration: underline;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #000;
-            padding: 2rem;
-            border: 2px solid #00ff00;
-            z-index: 1000;
-            max-width: 600px;
-            width: 90%;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            color: #00ff00;
-        }
-
-        footer {
-            background-color: #000;
-            padding: 2rem;
-            text-align: center;
-            border-top: 2px solid #00ff00;
-            margin-top: 2rem;
-        }
-
-        .social-icon {
-            font-size: 2.5rem;
-            color: #00ff00;
-            margin: 0 1rem;
-            transition: 0.3s;
-        }
-
-        .social-icon:hover {
-            transform: scale(1.2);
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hackpace - Learn to Hack the Right Way</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #0f0f0f;
+      color: #00ff00;
+    }
+    header {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #00ff00;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 10px 0;
+    }
+    nav a {
+      color: #00ff00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .course-container {
+      margin: 20px;
+      border: 2px dashed #00ff00;
+      padding: 20px;
+    }
+    .subtopic {
+      cursor: pointer;
+      margin: 10px 0;
+      background-color: #111;
+      padding: 10px;
+      border: 1px solid #00ff00;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 20%;
+      width: 60%;
+      background-color: #000;
+      color: #00ff00;
+      border: 2px solid #00ff00;
+      padding: 20px;
+      z-index: 1000;
+    }
+    .popup-close {
+      float: right;
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+    }
+    .forum iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      margin-top: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #00ff00;
+      background-color: #111;
+      margin-top: 40px;
+    }
+    .social-icons img {
+      width: 24px;
+      margin: 5px;
+      filter: brightness(0) invert(1);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">HACKPACE</div>
-        <nav>
-            <a href="#c-language">C</a>
-            <a href="#linux">Linux</a>
-            <a href="#python">Python</a>
-            <a href="#bash">Bash</a>
-            <a href="#assembly">Assembly</a>
-        </nav>
-    </header>
 
-    <main>
-        <!-- Course Containers -->
-        <div class="course-container" id="c-language">
-            <h2>C Language</h2>
-            <div class="course-topics">
-                <a class="topic-link" data-course="c-language">Basic Syntax</a>
-                <a class="topic-link" data-course="c-language">Pointers</a>
-                <a class="topic-link" data-course="c-language">Memory Management</a>
-            </div>
-            <a href="https://wa.me/1234567890" style="color: #00ff00; display: block; margin-top: 1rem;">Enroll via WhatsApp</a>
-        </div>
+  <header>
+    <img src="https://via.placeholder.com/100x50?text=Hackpace" alt="Hackpace Logo">
+    <h1>Hackpace</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#about">About</a>
+      <a href="#forum">Forum</a>
+    </nav>
+  </header>
 
-        <!-- Repeat similar containers for other courses -->
-        <!-- Add other course containers here -->
-    </main>
+  <section id="home">
+    <div class="course-container">
+      <h2>Welcome to Hackpace</h2>
+      <p>Master C, Python, Bash & Linux with real-time collaboration.</p>
+    </div>
+  </section>
 
-    <div class="overlay" id="overlay"></div>
-    <div class="modal" id="modal">
-        <span class="modal-close" onclick="closeModal()">✖</span>
-        <div id="modal-content"></div>
+  <section id="courses">
+    <div class="course-container">
+      <h2>C Programming</h2>
+      <div class="subtopic" onclick="showPopup('C Basics')">Basics</div>
+      <div class="subtopic" onclick="showPopup('Pointers and Memory')">Pointers and Memory</div>
     </div>
 
-    <footer>
-        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-    </footer>
+    <div class="course-container">
+      <h2>Linux Administration</h2>
+      <div class="subtopic" onclick="showPopup('Systemd & Boot')">Systemd & Boot</div>
+      <div class="subtopic" onclick="showPopup('User & Permissions')">User & Permissions</div>
+    </div>
 
-    <script>
-        // Course outlines data
-        const courseOutlines = {
-            'c-language': `<h3>C Language Course Outline</h3>
-                <ul>
-                    <li>Introduction to C Programming</li>
-                    <li>Data Types and Variables</li>
-                    <li>Control Structures</li>
-                    <li>Functions and Modular Programming</li>
-                    <li>Pointers and Memory Management</li>
-                    <li>File I/O Operations</li>
-                </ul>`
-            // Add outlines for other courses
-        };
+    <div class="course-container">
+      <h2>Python Programming</h2>
+      <div class="subtopic" onclick="showPopup('Data Types & Control Flow')">Data Types & Control Flow</div>
+      <div class="subtopic" onclick="showPopup('OOP in Python')">OOP in Python</div>
+    </div>
 
-        document.querySelectorAll('.topic-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const course = e.target.dataset.course;
-                document.getElementById('modal-content').innerHTML = courseOutlines[course];
-                document.getElementById('overlay').style.display = 'block';
-                document.getElementById('modal').style.display = 'block';
-            });
-        });
+    <div class="course-container">
+      <h2>Bash Scripting</h2>
+      <div class="subtopic" onclick="showPopup('Shell Basics')">Shell Basics</div>
+      <div class="subtopic" onclick="showPopup('Cron Jobs')">Cron Jobs</div>
+    </div>
+  </section>
 
-        function closeModal() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('modal').style.display = 'none';
-        }
+  <section id="about">
+    <div class="course-container">
+      <h2>About Hackpace</h2>
+      <p>Hackpace is an open learning platform for hackers and sysadmins. Learn programming and Linux the hacker way.</p>
+    </div>
+  </section>
 
-        document.getElementById('overlay').addEventListener('click', closeModal);
-    </script>
+  <section id="forum">
+    <div class="course-container forum">
+      <h2>Forum - Chat with Peers</h2>
+      <p>Chat live with other learners.</p>
+      <!-- Temporary placeholder chat embed (can replace with a real one) -->
+      <iframe src="https://stately-passionate-fowl.glitch.me"></iframe>
+    </div>
+  </section>
+
+  <div id="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popupBox">
+    <span class="popup-close" onclick="closePopup()">X</span>
+    <h3 id="popupTitle"></h3>
+    <p id="popupContent">This is placeholder content for the selected subtopic.</p>
+  </div>
+
+  <footer>
+    <p>Follow us</p>
+    <div class="social-icons">
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X (Twitter)"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+    </div>
+  </footer>
+
+  <script>
+    function showPopup(title) {
+      document.getElementById("popupTitle").innerText = title;
+      document.getElementById("popupContent").innerText = `Content for: ${title}. Learn more in this section.`;
+      document.getElementById("popupBox").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popupBox").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>
